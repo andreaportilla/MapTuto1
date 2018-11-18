@@ -23,7 +23,6 @@ class ViewController: UIViewController {
             let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
                                                       latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
             mapView.setRegion(coordinateRegion, animated: true)
-            centerMapOnLocation(location: initialLocation)
         }
 
     }
