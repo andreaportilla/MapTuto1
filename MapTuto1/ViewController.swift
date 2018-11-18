@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         _ = CLLocation(latitude: 21.282778, longitude: -157.829444)
         let regionRadius: CLLocationDistance = 1000
         func centerMapOnLocation(location: CLLocation) {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                      regionRadius, regionRadius)
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                      latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
             mapView.setRegion(coordinateRegion, animated: true)
         }
 
