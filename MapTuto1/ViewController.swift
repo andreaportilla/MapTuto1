@@ -18,6 +18,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         // set initial location in Honolulu
         _ = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        let regionRadius: CLLocationDistance = 1000
+        func centerMapOnLocation(location: CLLocation) {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                      regionRadius, regionRadius)
+            mapView.setRegion(coordinateRegion, animated: true)
+        }
 
     }
 
