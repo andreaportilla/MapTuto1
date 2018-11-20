@@ -28,7 +28,7 @@ class Artwork: NSObject, MKAnnotation {
     init?(json: [Any]) {
         // 1
         self.title = json[16] as? String ?? "No Title"
-        self.locationName = json[12] as! String
+        self.locationName = json[11] as! String
         self.discipline = json[15] as! String
         // 2
         if let latitude = Double(json[18] as! String),

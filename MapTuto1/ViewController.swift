@@ -14,6 +14,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var artworks: [Artwork] = []
     let regionRadius: CLLocationDistance = 1000
+    let locationManager = CLLocationManager()
+    func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAuthorizationStatus()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
