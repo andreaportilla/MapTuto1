@@ -58,6 +58,11 @@ class Artwork: NSObject, MKAnnotation {
             return .green
         }
     }
+    var imageName: String? {
+        if discipline == "Sculpture" { return "Statue" }
+        return "Flag"
+    }
+
     
     // Annotation right callout accessory opens this mapItem in Maps app
     func mapItem() -> MKMapItem {
