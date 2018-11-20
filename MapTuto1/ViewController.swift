@@ -24,9 +24,9 @@ class ViewController: UIViewController {
         // show artwork on map
          mapView.delegate = self
         //let artwork = Artwork(title: "King David Kalakaua",
-        //                      locationName: "Waikiki Gateway Park",
-        //                      discipline: "Sculpture",
-        //                      coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+          //                    locationName: "Waikiki Gateway Park",
+            //                  discipline: "Sculpture",
+              //                coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
         // mapView.addAnnotation(artwork)
         loadInitialData()
         mapView.addAnnotations(artworks)
@@ -38,6 +38,7 @@ class ViewController: UIViewController {
                                                   latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
+    
     func loadInitialData() {
         // 1
         guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
