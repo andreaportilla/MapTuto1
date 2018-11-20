@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             //                  discipline: "Sculpture",
               //                coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
         // mapView.addAnnotation(artwork)
-        mapView.register(ArtworkMarkerView.self,
+        mapView.register(ArtworkView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 
         loadInitialData()
