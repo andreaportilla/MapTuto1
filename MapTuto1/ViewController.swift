@@ -12,6 +12,7 @@ import MapKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    var locations: [Location] = []
     var artworks: [Artwork] = []
     let regionRadius: CLLocationDistance = 1000
     let locationManager = CLLocationManager()
@@ -55,27 +56,22 @@ class ViewController: UIViewController {
                                                   latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
+
     
     func loadInitialData() {
         // 1
         guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
             else { return }
-        let optionalData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
         
-        guard
-            let data = optionalData,
-            // 2
-            let json = try? JSONSerialization.jsonObject(with: data),
-            // 3
-            let dictionary = json as? [String: Any],
-            // 4
-            let works = dictionary["data"] as? [[Any]]
-            else { return }
-        // 5
-        let validWorks = works.flatMap { Artwork(json: $0) }
-        artworks.append(contentsOf: validWorks)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: fileName))
+        let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+        let dictionary = json as? [String: Any]
+        for location in dictionary!["locations"] as! NSArray {
+            let locationInstance = Location(json:location as! [String : Any]);
+            locations.append(locationInstance!)
+        }
+        
     }
-    
 
 }
 
